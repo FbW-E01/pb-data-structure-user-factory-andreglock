@@ -49,4 +49,26 @@ const makeUserObject = (userInput) => {
   return userObject;
 };
 
+const listDepartments = (input) => {
+  let userDataArray = [];
+  const allDepartments = [];
+  for (let i = 0; i < input.length; i++) {
+    userDataArray[i] = input[i].split(',');
+    allDepartments.push(userDataArray[i][3].split('|'));
+  }
+  
+  const departments = [];
+  for (let i = 0; i < allDepartments.length; i++) {
+    for (let j = 0; j < allDepartments[i].length; j++) {
+      if (!departments.includes(allDepartments[i][j])) {
+        departments.push(allDepartments[i][j]);
+      }
+    }  
+  }
+
+  return departments.sort();
+};
+
 console.log(makeUserObject(userDataDump));
+
+console.log(listDepartments(userDataDump));
